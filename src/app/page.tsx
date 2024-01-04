@@ -38,29 +38,37 @@ const sensorStyle: any = {
     left: "-3px",
     transform: "rotate(45deg)",
     transformOrigin: "top left",
+  },
+  textDiagonal: {
+    position: "absolute",
+    transform: "rotate(45deg)",
+    transformOrigin: "top left",
   }
 }
 
 export function SensorCanvans() {
   const scale = 200;
-  const sizeX = 100, sizeY = 100;
+  const sizeX = 5000, sizeY = 4000;
   const aspectRatioX = sizeX > sizeY ? (sizeX / sizeY) : 1;
   const aspectRatioY = sizeX < sizeY ? (sizeY / sizeX) : 1;
   const aspectRatio = aspectRatioX > aspectRatioY ? aspectRatioX : aspectRatioY;
-  const diagonalAngle = (Math.atan(sizeY / sizeX) * 180 / Math.PI);
+  const diagonalAngle = Math.atan(sizeY / sizeX) * 180 / Math.PI;
+  const diagonalLength = Math.sqrt(((scale / aspectRatioX) * (scale / aspectRatioX)) + ((scale / aspectRatioY) * (scale / aspectRatioY)));
 
   sensorStyle.square.width = (scale * aspectRatioX) / aspectRatio;
   sensorStyle.square.height = (scale * aspectRatioY) / aspectRatio;
   sensorStyle.diagonal.transform = `rotate(${diagonalAngle}deg)`
-  sensorStyle.diagonal.width = `calc(${scale}px * sqrt(2))`;
+  sensorStyle.diagonal.width = diagonalLength;
 
   sensorStyle.textSizeX.transform = `translate(-50%,-50%) translate(0, -${scale / aspectRatioX / 2 + 15}px)`;
   sensorStyle.textSizeY.transform = `translate(-50%,-50%) rotate(-90deg) translate(0, -${scale / aspectRatioY / 2 + 15}px)`;
+  sensorStyle.textDiagonal.transform = `rotate(${diagonalAngle}deg) translate(${diagonalLength / 2 - 30}px, 0)`
 
   return (
     <div style={sensorStyle.canvans}>
       <div style={sensorStyle.square}>
         <div style={sensorStyle.diagonal}></div>
+        <div style={sensorStyle.textDiagonal}>100mm</div>
       </div>
       <div style={sensorStyle.textSizeX}>100mm</div>
       <div style={sensorStyle.textSizeY}>200mm</div>
