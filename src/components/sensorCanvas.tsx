@@ -1,10 +1,12 @@
+import { recursiveAssign } from "@/utils/recursiveAssign";
+
 interface SensorCanvasProps {
   sizeX: number;
   sizeY: number;
   scale: number;
 }
 
-const sensorStyle: any = {
+const sensorCanvasStyle: any = {
   canvas: {
     position: "absolute",
     top: "50%",
@@ -54,6 +56,8 @@ const sensorStyle: any = {
 }
 
 export function SensorCanvas(props: SensorCanvasProps) {
+  let style = recursiveAssign({}, sensorCanvasStyle);
+
   const scale = props.scale ?? 200;
   const sizeX = props.sizeX, sizeY = props.sizeY;
 
@@ -64,21 +68,21 @@ export function SensorCanvas(props: SensorCanvasProps) {
   const diagonalAngle = Math.atan(sizeY / sizeX) * 180 / Math.PI;
   const diagonalLength = Math.sqrt(((scale / aspectRatioX) * (scale / aspectRatioX)) + ((scale / aspectRatioY) * (scale / aspectRatioY)));
 
-  sensorStyle.canvas.width = (scale * aspectRatioX) / aspectRatio;
-  sensorStyle.canvas.height = (scale * aspectRatioY) / aspectRatio;
-  sensorStyle.diagonal.transform = `rotate(${diagonalAngle}deg)`
-  sensorStyle.diagonal.width = diagonalLength;
+  style.canvas.width = (scale * aspectRatioX) / aspectRatio;
+  style.canvas.height = (scale * aspectRatioY) / aspectRatio;
+  style.diagonal.transform = `rotate(${diagonalAngle}deg)`
+  style.diagonal.width = diagonalLength;
 
   return (
-    <div style={sensorStyle.canvas}>
-      <div style={sensorStyle.square}>
-        <div style={sensorStyle.diagonal}>
-          <div style={sensorStyle.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
+    <div style={style.canvas}>
+      <div style={style.square}>
+        <div style={style.diagonal}>
+          <div style={style.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
         </div>
-        <div style={sensorStyle.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
+        <div style={style.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
       </div>
-      <div style={sensorStyle.textSizeX}>{sizeX ?? "?"}mm</div>
-      <div style={sensorStyle.textSizeY}>{sizeY ?? "?"}mm</div>
+      <div style={style.textSizeX}>{sizeX ?? "?"}mm</div>
+      <div style={style.textSizeY}>{sizeY ?? "?"}mm</div>
     </div>
   )
 }
