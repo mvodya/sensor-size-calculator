@@ -35,6 +35,10 @@ const sensorStyle: any = {
     top: "50%",
     transform: "rotate(-90deg) translate(-50%,-100%)",
   },
+  textSquare: {
+    position: "absolute",
+    bottom: "0px",
+  },
   diagonal: {
     width: "calc(100px * sqrt(2))",
     borderTop: "3px solid",
@@ -53,7 +57,7 @@ const sensorStyle: any = {
 
 export function SensorCanvans() {
   const scale = 200;
-  const sizeX = 5000, sizeY = 4000;
+  const sizeX = 34, sizeY = 23;
   const aspectRatioX = sizeX > sizeY ? (sizeX / sizeY) : 1;
   const aspectRatioY = sizeX < sizeY ? (sizeY / sizeX) : 1;
   const aspectRatio = aspectRatioX > aspectRatioY ? aspectRatioX : aspectRatioY;
@@ -68,11 +72,13 @@ export function SensorCanvans() {
   return (
     <div style={sensorStyle.canvans}>
       <div style={sensorStyle.square}>
-        <div style={sensorStyle.diagonal}><div style={sensorStyle.textDiagonal}>100mm</div></div>
-
+        <div style={sensorStyle.diagonal}>
+          <div style={sensorStyle.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
+        </div>
+        <div style={sensorStyle.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
       </div>
-      <div style={sensorStyle.textSizeX}>100mm</div>
-      <div style={sensorStyle.textSizeY}>200mm</div>
+      <div style={sensorStyle.textSizeX}>{sizeX}mm</div>
+      <div style={sensorStyle.textSizeY}>{sizeY}mm</div>
     </div>
   )
 }
