@@ -74,15 +74,15 @@ export function SensorCanvas(props: SensorCanvasProps) {
   style.diagonal.width = diagonalLength;
 
   return (
-    <div style={style.canvas}>
-      <div style={style.square}>
-        <div style={style.diagonal}>
-          <div style={style.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
+    <div className="transition-all duration-300" style={style.canvas}>
+      <div className="transition-all duration-300" style={style.square}>
+        <div className="transition-all duration-300" style={style.diagonal}>
+          <div className="transition-all duration-300" style={style.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
         </div>
-        <div style={style.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
+        <div className="transition-all duration-300" style={style.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
       </div>
-      <div style={style.textSizeX}>{sizeX ?? "?"}mm</div>
-      <div style={style.textSizeY}>{sizeY ?? "?"}mm</div>
+      <div className="transition-all duration-300" style={style.textSizeX}>{sizeX ?? "?"}mm</div>
+      <div className="transition-all duration-300" style={style.textSizeY}>{sizeY ?? "?"}mm</div>
     </div>
   )
 }
