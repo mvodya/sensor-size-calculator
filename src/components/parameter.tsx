@@ -40,9 +40,9 @@ export function ParameterDual(props: ParameterProps<{a: number, b: number}>) {
     <div className="">
       <div className="pb-1">{props.title}:</div>
       <div className="flex">
-        <input type="number" id={props.id + "_a"} value={value.a} onChange={e => setValue({ a: +e.target.value, b: value.b })} className="w-full basis-1/4 bg-slate-100 text-center" />
+        <input type="number" id={props.id + "_a"} value={value.a} onChange={e => setValue({ ...value, a: +e.target.value })} className="w-full basis-1/4 bg-slate-100 text-center" />
         <div className="basis-1/2 bg-slate-200 text-center">{props.delimiter ?? "/"}</div>
-        <input type="number" id={props.id + "_b"} value={value.b} onChange={e => setValue({ a: value.a, b: +e.target.value })} className="w-full basis-1/4 bg-slate-300 text-center" />
+        <input type="number" id={props.id + "_b"} value={value.b} onChange={e => setValue({ ...value, b: +e.target.value })} className="w-full basis-1/4 bg-slate-300 text-center" />
         <SelectButton />
       </div>
     </div>
