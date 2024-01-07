@@ -81,8 +81,8 @@ export function SensorCanvas(props: SensorCanvasProps) {
         </div>
         <div className="transition-all duration-300" style={style.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
       </div>
-      <div className="transition-all duration-300" style={style.textSizeX}>{sizeX ?? "?"}mm</div>
-      <div className="transition-all duration-300" style={style.textSizeY}>{sizeY ?? "?"}mm</div>
+      <div className="transition-all duration-300" style={style.textSizeX}>{sizeX.toFixed(2) ?? "?"}mm</div>
+      <div className="transition-all duration-300" style={style.textSizeY}>{sizeY.toFixed(2) ?? "?"}mm</div>
     </div>
   )
 }
