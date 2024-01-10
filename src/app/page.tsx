@@ -26,11 +26,41 @@ export default function Home() {
   });
 
   function aspectRatioHandler(value: { a: string, b: string }) {
-    setParams({ ...params, aspectRatio: value });
+    const gdc = Math.sqrt((1000000 * +params.megapixels) / (+value.a * +value.b))
+    const resolution = {
+      a: +value.a * gdc,
+      b: +value.b * gdc,
+    }
+    const dimensions = {
+      a: +params.pixelSize * resolution.a / 1000,
+      b: +params.pixelSize * resolution.b / 1000,
+    }
+
+    const diagonalPixels = Math.sqrt((resolution.a * resolution.a) + (resolution.b * resolution.b));
+    const diagonalInch = Math.sqrt((+dimensions.a * +dimensions.a) + (+dimensions.b * +dimensions.b)) / 25.4;
+    const ppi = diagonalPixels / diagonalInch;
+
+    setParams({ ...params, aspectRatio: value, resolution: stringConvertAB(resolution), dimensions: stringConvertAB(dimensions), ppi: ppi.toString() });
   }
 
   function dimensionsHandler(value: { a: string, b: string }) {
-    setParams({ ...params, dimensions: value });
+    const gdc = GDC(+value.a, +value.b);
+    const aspectRatio = {
+      a: +value.a / gdc,
+      b: +value.b / gdc,
+    }
+    const gdcAR = Math.sqrt((1000000 * +params.megapixels) / (+params.aspectRatio.a * +params.aspectRatio.b))
+    const resolution = {
+      a: aspectRatio.a * gdcAR,
+      b: aspectRatio.b * gdcAR,
+    }
+    const pixelSize =  (+value.a / resolution.a) * 1000;
+
+    const diagonalPixels = Math.sqrt((resolution.a * resolution.a) + (resolution.b * resolution.b));
+    const diagonalInch = Math.sqrt((+value.a * +value.a) + (+value.b * +value.b)) / 25.4;
+    const ppi = diagonalPixels / diagonalInch;
+
+    setParams({ ...params, dimensions: value, aspectRatio: stringConvertAB(aspectRatio), resolution: stringConvertAB(resolution), pixelSize: pixelSize.toString(), ppi: ppi.toString() });
   }
 
   function resolutionHandler(value: { a: string, b: string }) {
@@ -44,16 +74,25 @@ export default function Home() {
       a: +params.pixelSize * +value.a / 1000,
       b: +params.pixelSize * +value.b / 1000,
     }
+    const diagonalPixels = Math.sqrt((+params.resolution.a * +params.resolution.a) + (+params.resolution.b * +params.resolution.b));
+    const diagonalInch = Math.sqrt((dimensions.a * dimensions.a) + (dimensions.b * dimensions.b)) / 25.4;
+    const ppi = diagonalPixels / diagonalInch;
 
-    setParams({ ...params, resolution: value, aspectRatio: stringConvertAB(aspectRatio), megapixels: megapixels.toString(), dimensions: stringConvertAB(dimensions) });
+    setParams({ ...params, resolution: value, aspectRatio: stringConvertAB(aspectRatio), megapixels: megapixels.toString(), dimensions: stringConvertAB(dimensions), ppi: ppi.toString() });
   }
 
   function megapixelsHandler(value: string) {
-    setParams({ ...params, megapixels: value });
+    const gdc = Math.sqrt((1000000 * +value) / (+params.aspectRatio.a * +params.aspectRatio.b))
+    const resolution = {
+      a: +params.aspectRatio.a * gdc,
+      b: +params.aspectRatio.b * gdc,
+    }
+
+    setParams({ ...params, megapixels: value, resolution: stringConvertAB(resolution) });
   }
 
   function ppiHandler(value: string) {
-    setParams({ ...params, ppi: value });
+    // setParams({ ...params, ppi: value });
   }
 
   function pixelSizeHandler(value: string) {
