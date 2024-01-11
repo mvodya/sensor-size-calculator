@@ -124,7 +124,12 @@ export default function Home() {
           <Parameter id="ppi" title="Pixel Per Inch" value={params.ppi} handler={ppiHandler} unit="PPI" />
           <Parameter id="pixel_size" title="Pixel Size" value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
         </div>
-        <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+        <div className="pt-4">
+          <div className="pb-8 font-light">Sensor scheme:</div>
+          <div className="flex justify-center">
+            <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+          </div>
+        </div>
       </div>
     </main>
   )

@@ -8,10 +8,10 @@ interface SensorCanvasProps {
 
 const sensorCanvasStyle: any = {
   canvas: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%,-50%)",
+    position: "relative",
+    // top: "50%",
+    // left: "50%",
+    // transform: "translate(-50%,-50%)",
   },
   square: {
     width: "100%",
