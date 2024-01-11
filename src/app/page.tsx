@@ -54,7 +54,7 @@ export default function Home() {
       a: aspectRatio.a * gdcAR,
       b: aspectRatio.b * gdcAR,
     }
-    const pixelSize =  (+value.a / resolution.a) * 1000;
+    const pixelSize = (+value.a / resolution.a) * 1000;
 
     const diagonalPixels = Math.sqrt((resolution.a * resolution.a) + (resolution.b * resolution.b));
     const diagonalInch = Math.sqrt((+value.a * +value.a) + (+value.b * +value.b)) / 25.4;
@@ -109,16 +109,23 @@ export default function Home() {
 
 
   return (
-    <main className="container mx-auto">
-      <div className="grid gap-x-4 gap-y-2 grid-cols-2">
-        <ParameterDual id="aspect_ratio" title="Aspect Ratio" value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
-        <ParameterDual id="dimensions" title="Dimensions" value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
-        <ParameterDual id="resolution" title="Resolution" value={params.resolution} handler={resolutionHandler} delimiter="x" />
-        <Parameter id="megapixels" title="Megapixels" value={params.megapixels} handler={megapixelsHandler} unit="MP" />
-        <Parameter id="ppi" title="Pixel Per Inch" value={params.ppi} handler={ppiHandler} unit="PPI" />
-        <Parameter id="pixel_size" title="Pixel Size" value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
+    <main>
+      <div className="bg-sky-800 text-white">
+        <div className="container mx-auto px-4 py-2 text-xl">
+          Sensor Size Calculator
+        </div>
       </div>
-      <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+      <div className="container mx-auto px-4 pt-4">
+        <div className="grid gap-x-4 gap-y-2 grid-cols-2">
+          <ParameterDual id="aspect_ratio" title="Aspect Ratio" value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
+          <ParameterDual id="dimensions" title="Dimensions" value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
+          <ParameterDual id="resolution" title="Resolution" value={params.resolution} handler={resolutionHandler} delimiter="x" />
+          <Parameter id="megapixels" title="Megapixels" value={params.megapixels} handler={megapixelsHandler} unit="MP" />
+          <Parameter id="ppi" title="Pixel Per Inch" value={params.ppi} handler={ppiHandler} unit="PPI" />
+          <Parameter id="pixel_size" title="Pixel Size" value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
+        </div>
+        <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+      </div>
     </main>
   )
 }
