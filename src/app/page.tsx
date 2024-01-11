@@ -116,18 +116,20 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto px-4 pt-4">
-        <div className="grid gap-x-4 gap-y-2 grid-cols-2">
-          <ParameterDual id="aspect_ratio" title="Aspect Ratio" value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
-          <ParameterDual id="dimensions" title="Dimensions" value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
-          <ParameterDual id="resolution" title="Resolution" value={params.resolution} handler={resolutionHandler} delimiter="x" />
-          <Parameter id="megapixels" title="Megapixels" value={params.megapixels} handler={megapixelsHandler} unit="MP" />
-          <Parameter id="ppi" title="Pixel Per Inch" value={params.ppi} handler={ppiHandler} unit="PPI" />
-          <Parameter id="pixel_size" title="Pixel Size" value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
-        </div>
-        <div className="pt-4">
-          <div className="pb-8 font-light">Sensor scheme:</div>
-          <div className="flex justify-center">
-            <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+        <div className="columns-1 sm:columns-2">
+          <div className="grid gap-x-4 gap-y-2 grid-cols-2">
+            <ParameterDual id="aspect_ratio" title="Aspect Ratio" value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
+            <ParameterDual id="dimensions" title="Dimensions" value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
+            <ParameterDual id="resolution" title="Resolution" value={params.resolution} handler={resolutionHandler} delimiter="x" />
+            <Parameter id="megapixels" title="Megapixels" value={params.megapixels} handler={megapixelsHandler} unit="MP" />
+            <Parameter id="ppi" title="Pixel Per Inch" value={params.ppi} handler={ppiHandler} unit="PPI" />
+            <Parameter id="pixel_size" title="Pixel Size" value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
+          </div>
+          <div className="grid pt-4">
+            <div className="pb-8 font-light">Sensor scheme:</div>
+            <div className="flex justify-center">
+              <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+            </div>
           </div>
         </div>
       </div>
