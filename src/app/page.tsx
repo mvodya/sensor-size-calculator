@@ -116,7 +116,7 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto px-4 pt-4">
-        <div className="columns-1 sm:columns-2">
+        <div className="grid sm:grid-cols-2 gap-8">
           <div className="grid gap-x-4 gap-y-2 grid-cols-2">
             <ParameterDual id="aspect_ratio" title="Aspect Ratio" value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
             <ParameterDual id="dimensions" title="Dimensions" value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
