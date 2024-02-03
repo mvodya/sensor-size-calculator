@@ -17,12 +17,12 @@ function stringConvertAB(v: { a: number, b: number }): { a: string, b: string } 
 
 export default function Home() {
   const [params, setParams] = useState({
-    aspectRatio: { a: "0", b: "0" },
-    dimensions: { a: "0", b: "0" },
-    resolution: { a: "0", b: "0" }, // 8064 x 6048
-    megapixels: "0",
-    ppi: "0",
-    pixelSize: "0",
+    aspectRatio: { a: "4", b: "3" },
+    dimensions: { a: "9,83", b: "7,37" },
+    resolution: { a: "8064", b: "6048" }, // 8064 x 6048
+    megapixels: "48,771072",
+    ppi: "20819,67",
+    pixelSize: "1.22",
   });
 
   function aspectRatioHandler(value: { a: string, b: string }) {
