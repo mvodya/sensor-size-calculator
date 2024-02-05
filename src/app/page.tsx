@@ -18,10 +18,10 @@ function stringConvertAB(v: { a: number, b: number }): { a: string, b: string } 
 export default function Home() {
   const [params, setParams] = useState({
     aspectRatio: { a: "4", b: "3" },
-    dimensions: { a: "9,83", b: "7,37" },
+    dimensions: { a: "9.83", b: "7.37" },
     resolution: { a: "8064", b: "6048" }, // 8064 x 6048
-    megapixels: "48,771072",
-    ppi: "20819,67",
+    megapixels: "48.771072",
+    ppi: "20819.67",
     pixelSize: "1.22",
   });
 
