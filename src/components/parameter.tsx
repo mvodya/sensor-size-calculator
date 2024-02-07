@@ -8,8 +8,8 @@ function SelectButton() {
   }
 
   return (
-    <div className="flex w-8 justify-center bg-slate-200" onClick={onClick}>
-      <div className=" text-center py-1 px-4">{open ? "X" : "S"}</div>
+    <div className="flex w-8 justify-center bg-slate-200">
+      <div className="text-center py-1 px-4 select-none" onClick={onClick}>{open ? "X" : "S"}</div>
     </div>
   )
 }
