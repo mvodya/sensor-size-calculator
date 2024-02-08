@@ -5,6 +5,7 @@ import { Parameter, ParameterDual } from "@/components/parameter";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRulerCombined, faCropSimple, faCamera, faRuler, faImage, faCompassDrafting, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 function GDC(a: number, b: number): number {
   if (b) {
@@ -114,8 +115,15 @@ export default function Home() {
   return (
     <main>
       <div className="bg-sky-800 text-white">
-        <div className="container mx-auto px-4 py-2 text-xl">
-          Sensor Size Calculator
+        <div className="container mx-auto px-4 py-2 text-xl flex justify-between">
+          <div>
+            Sensor Size Calculator</div>
+          <div>
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="fas"
+            />
+          </div>
         </div>
       </div>
       <div className="container mx-auto px-4 pt-4">
