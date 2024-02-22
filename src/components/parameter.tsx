@@ -1,6 +1,7 @@
+import { ReactElement, useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ReactElement, useState } from "react";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 function SelectButton() {
   const [open, setOpen] = useState(0);
@@ -9,9 +10,16 @@ function SelectButton() {
     setOpen(open ? 0 : 1);
   }
 
+  function selectIcon() {
+    return <FontAwesomeIcon
+      icon={faAngleRight}
+      className={open ? "fas transition rotate-90" : "fas transition"}
+    />;
+  }
+
   return (
     <div className="flex w-8 justify-center bg-slate-200">
-      <div className="text-center py-1 px-4 select-none" onClick={onClick}>{open ? "X" : "S"}</div>
+      <div className="text-center py-1 px-4 select-none" onClick={onClick}>{selectIcon()}</div>
     </div>
   )
 }
