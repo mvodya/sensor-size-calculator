@@ -123,6 +123,24 @@ export default function Home() {
     { title: "2.40:1", value: { a: "2.40", b: "1" } },
   ];
 
+  const predefinedResolutionList = [
+    { title: "1920 x 1080 (Full HD)", value: { a: "1920", b: "1080" } },
+    { title: "1280 x 720 (HD)", value: { a: "1280", b: "1024" } },
+    { title: "854 x 480 (SD)", value: { a: "854", b: "480" } },
+    { title: "640 x 360 (360p)", value: { a: "640", b: "360" } },
+    { title: "426 x 240 (240p)", value: { a: "426", b: "240" } },
+    { title: "2560 x 1440 (QHD)", value: { a: "2560", b: "1440" } },
+    { title: "3840 x 2160 (4K UHD)", value: { a: "3840", b: "2160" } },
+    { title: "7680 x 4320 (8K)", value: { a: "7680", b: "4320" } },
+    { title: "1366 x 768", value: { a: "1366", b: "768" } },
+    { title: "1280 x 1024", value: { a: "1280", b: "1024" } },
+    { title: "1440 x 900", value: { a: "1440", b: "900" } },
+    { title: "1600 x 900", value: { a: "1600", b: "900" } },
+    { title: "1680 x 1050", value: { a: "1680", b: "1050" } },
+    { title: "1280 x 800", value: { a: "1280", b: "800" } },
+    { title: "1024 x 768", value: { a: "1024", b: "768" } },
+  ];
+
   return (
     <main>
       <div className="bg-sky-800 text-white">
@@ -142,7 +160,7 @@ export default function Home() {
           <div className="grid gap-x-4 gap-y-2 grid-cols-2">
             <ParameterDual id="aspect_ratio" title="Aspect Ratio" icon={faCropSimple} value={params.aspectRatio} options={predefinedAspectRatioList} handler={aspectRatioHandler} delimiter="/" />
             <ParameterDual id="dimensions" title="Dimensions" icon={faRulerCombined} value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
-            <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} handler={resolutionHandler} delimiter="x" />
+            <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} options={predefinedResolutionList} handler={resolutionHandler} delimiter="x" />
             <Parameter id="megapixels" title="Megapixels" icon={faCamera} value={params.megapixels} handler={megapixelsHandler} unit="MP" />
             <Parameter id="ppi" title="Pixel Per Inch" icon={faCompassDrafting} value={params.ppi} handler={ppiHandler} unit="PPI" />
             <Parameter id="pixel_size" title="Pixel Size" icon={faRuler} value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />

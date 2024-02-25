@@ -41,8 +41,8 @@ function SelectButton<T extends string | { a: string, b: string }>(props: Select
   function selectListContent(options: SelectButtonItem<T>[]) {
     if (open) {
       return (
-        <div className="absolute right-0 z-10 w-40 backdrop-blur-md backdrop-grayscale rounded-md border-2 border-slate-300">
-          <div className="overflow-y-auto text-right grid grid-flow-row gap-1">
+        <div className="absolute right-0 w-60 z-10 backdrop-blur-md backdrop-grayscale rounded-md border-2 border-slate-300">
+          <div className="overflow-y-auto text-right grid grid-flow-row auto-rows-max gap-1">
             {options.map((option, index) => {
               return optionElement(index, option.title, option.value);
             })}
