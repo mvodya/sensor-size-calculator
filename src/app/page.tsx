@@ -111,6 +111,17 @@ export default function Home() {
     setParams({ ...params, pixelSize: value, dimensions: stringConvertAB(dimensions), ppi: ppi.toString() });
   }
 
+  const predefinedAspectRatioList = [
+    { title: "16:9", value: { a: "16", b: "9" } },
+    { title: "16:10", value: { a: "16", b: "10" } },
+    { title: "4:3", value: { a: "4", b: "3" } },
+    { title: "1:1", value: { a: "1", b: "1" } },
+    { title: "1.33:1", value: { a: "1.33", b: "1" } },
+    { title: "14:10", value: { a: "14", b: "10" } },
+    { title: "1.85:1", value: { a: "1.85", b: "1" } },
+    { title: "2.00:1", value: { a: "2.00", b: "1" } },
+    { title: "2.40:1", value: { a: "2.40", b: "1" } },
+  ];
 
   return (
     <main>
@@ -129,7 +140,7 @@ export default function Home() {
       <div className="container mx-auto px-4 pt-4">
         <div className="grid sm:grid-cols-2 gap-8">
           <div className="grid gap-x-4 gap-y-2 grid-cols-2">
-            <ParameterDual id="aspect_ratio" title="Aspect Ratio" icon={faCropSimple} value={params.aspectRatio} handler={aspectRatioHandler} delimiter="/" />
+            <ParameterDual id="aspect_ratio" title="Aspect Ratio" icon={faCropSimple} value={params.aspectRatio} options={predefinedAspectRatioList} handler={aspectRatioHandler} delimiter="/" />
             <ParameterDual id="dimensions" title="Dimensions" icon={faRulerCombined} value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
             <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} handler={resolutionHandler} delimiter="x" />
             <Parameter id="megapixels" title="Megapixels" icon={faCamera} value={params.megapixels} handler={megapixelsHandler} unit="MP" />
