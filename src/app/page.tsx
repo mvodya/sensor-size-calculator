@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRulerCombined, faCropSimple, faCamera, faRuler, faImage, faCompassDrafting, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
+// Calculate greatest common divisor
 function GDC(a: number, b: number): number {
   if (b) {
     return GDC(b, a % b);
@@ -15,6 +16,7 @@ function GDC(a: number, b: number): number {
   }
 }
 
+// Convert {number, number} to {string, string}
 function stringConvertAB(v: { a: number, b: number }): { a: string, b: string } {
   return { a: v.a.toString(), b: v.b.toString() };
 }
@@ -29,6 +31,7 @@ export default function Home() {
     pixelSize: "1.22",
   });
 
+  // Aspect ratio calculator
   function aspectRatioHandler(value: { a: string, b: string }) {
     const gdc = Math.sqrt((1000000 * +params.megapixels) / (+value.a * +value.b))
     const resolution = {
@@ -47,6 +50,7 @@ export default function Home() {
     setParams({ ...params, aspectRatio: value, resolution: stringConvertAB(resolution), dimensions: stringConvertAB(dimensions), ppi: ppi.toString() });
   }
 
+  // Dimensions calculator
   function dimensionsHandler(value: { a: string, b: string }) {
     const gdc = GDC(+value.a, +value.b);
     const aspectRatio = {
@@ -67,6 +71,7 @@ export default function Home() {
     setParams({ ...params, dimensions: value, aspectRatio: stringConvertAB(aspectRatio), resolution: stringConvertAB(resolution), pixelSize: pixelSize.toString(), ppi: ppi.toString() });
   }
 
+  // Resolution calculator
   function resolutionHandler(value: { a: string, b: string }) {
     const gdc = GDC(+value.a, +value.b);
     const megapixels = +value.a * +value.b / 1000000;
@@ -96,9 +101,11 @@ export default function Home() {
   }
 
   function ppiHandler(value: string) {
+    // Not used (constant only)
     // setParams({ ...params, ppi: value });
   }
 
+  // Pixel size calculator
   function pixelSizeHandler(value: string) {
     const dimensions = {
       a: +value * +params.resolution.a / 1000,
@@ -111,6 +118,7 @@ export default function Home() {
     setParams({ ...params, pixelSize: value, dimensions: stringConvertAB(dimensions), ppi: ppi.toString() });
   }
 
+  // Predefined Aspect ratios for select box
   const predefinedAspectRatioList = [
     { title: "16:9", value: { a: "16", b: "9" } },
     { title: "16:10", value: { a: "16", b: "10" } },
@@ -123,6 +131,7 @@ export default function Home() {
     { title: "2.40:1", value: { a: "2.40", b: "1" } },
   ];
 
+  // Predefined Resolutions (with names) for select box
   const predefinedResolutionList = [
     { title: "1920 x 1080 (Full HD)", value: { a: "1920", b: "1080" } },
     { title: "1280 x 720 (HD)", value: { a: "1280", b: "1024" } },
