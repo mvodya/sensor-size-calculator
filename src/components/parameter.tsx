@@ -1,19 +1,21 @@
-import { ReactElement, useState } from "react";
+import { useState } from "react";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-type SelectButtonItem<T extends string | { a: string, b: string }> = {
+type item<T> = string | { a: string, b: string };
+
+type SelectButtonItem<T extends item<T>> = {
   title: string;
   value: T;
 }
 
-type SelectButtonProps<T extends string | { a: string, b: string }> = {
+type SelectButtonProps<T extends item<T>> = {
   options: SelectButtonItem<T>[];
   handler: (value: T) => void;
 }
 
-function SelectButton<T extends string | { a: string, b: string }>(props: SelectButtonProps<T>) {
+function SelectButton<T extends item<T>>(props: SelectButtonProps<T>) {
   const [open, setOpen] = useState(0);
 
   function onClick() {
@@ -64,7 +66,7 @@ function SelectButton<T extends string | { a: string, b: string }>(props: Select
   )
 }
 
-type ParameterProps<T extends string | { a: string, b: string }> = {
+type ParameterProps<T extends item<T>> = {
   id: string;
   title: string;
   icon?: IconDefinition;
