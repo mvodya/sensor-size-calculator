@@ -152,42 +152,49 @@ export default function Home() {
 
   return (
     <main>
-      <div className="bg-sky-800 text-white">
-        <div className="container mx-auto px-4 py-2 text-xl flex justify-between">
-          <div>
-            Sensor Size Calculator</div>
-          <div>
-            <a target="_blank" href="https://github.com/mvodya/sensor-size-calculator" rel="noopener noreferrer" className="hover:text-blue-400">
-              <FontAwesomeIcon
-                icon={faGithub}
-                className="fas"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="container mx-auto px-4 pt-4">
-        <div className="grid sm:grid-cols-2 gap-8">
-          <div className="grid gap-x-4 gap-y-2 grid-cols-2">
-            <ParameterDual id="aspect_ratio" title="Aspect Ratio" icon={faCropSimple} value={params.aspectRatio} options={predefinedAspectRatioList} handler={aspectRatioHandler} delimiter="/" />
-            <ParameterDual id="dimensions" title="Dimensions" icon={faRulerCombined} value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
-            <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} options={predefinedResolutionList} handler={resolutionHandler} delimiter="x" />
-            <Parameter id="megapixels" title="Megapixels" icon={faCamera} value={params.megapixels} handler={megapixelsHandler} unit="MP" />
-            <Parameter id="ppi" title="Pixel Per Inch" icon={faCompassDrafting} value={params.ppi} handler={ppiHandler} unit="PPI" />
-            <Parameter id="pixel_size" title="Pixel Size" icon={faRuler} value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
-          </div>
-          <div className="grid pt-4">
-            <div className="pb-8 font-light">
-              <FontAwesomeIcon
-                icon={faObjectGroup}
-                className="fas pr-2"
-              />
-              Sensor scheme:</div>
-            <div className="flex justify-center">
-              <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+      <div className="flex flex-col h-screen justify-between">
+        <div className="bg-sky-800 text-white">
+          <div className="container mx-auto px-4 py-2 text-xl flex justify-between">
+            <div>
+              Sensor Size Calculator</div>
+            <div>
+              <a target="_blank" href="https://github.com/mvodya/sensor-size-calculator" rel="noopener noreferrer" className="hover:text-blue-400">
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  className="fas"
+                />
+              </a>
             </div>
           </div>
         </div>
+        <div className="container mx-auto px-4 pt-4 mb-auto">
+          <div className="grid sm:grid-cols-2 gap-8">
+            <div className="grid gap-x-4 gap-y-2 grid-cols-2">
+              <ParameterDual id="aspect_ratio" title="Aspect Ratio" icon={faCropSimple} value={params.aspectRatio} options={predefinedAspectRatioList} handler={aspectRatioHandler} delimiter="/" />
+              <ParameterDual id="dimensions" title="Dimensions" icon={faRulerCombined} value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
+              <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} options={predefinedResolutionList} handler={resolutionHandler} delimiter="x" />
+              <Parameter id="megapixels" title="Megapixels" icon={faCamera} value={params.megapixels} handler={megapixelsHandler} unit="MP" />
+              <Parameter id="ppi" title="Pixel Per Inch" icon={faCompassDrafting} value={params.ppi} handler={ppiHandler} unit="PPI" />
+              <Parameter id="pixel_size" title="Pixel Size" icon={faRuler} value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
+            </div>
+            <div className="grid pt-4">
+              <div className="pb-8 font-light">
+                <FontAwesomeIcon
+                  icon={faObjectGroup}
+                  className="fas pr-2"
+                />
+                Sensor scheme:</div>
+              <div className="flex justify-center">
+                <SensorCanvas sizeX={+params.dimensions.a} sizeY={+params.dimensions.b} scale={200} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer className="bg-gray-200">
+          <div className="container mx-auto h-10 my-2 px-4">
+            © 2024 / by <a className="hover:text-blue-500" target="_blank" href="https://github.com/mvodya">Mark Vodyanitskiy</a> / <a className="hover:text-blue-500" target="_blank" href="https://github.com/mvodya/sensor-size-calculator"><FontAwesomeIcon icon={faGithub} className="fas" /> GitHub</a>
+          </div>
+        </footer>
       </div>
     </main>
   )
