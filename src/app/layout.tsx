@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Sensor Size Calculator',
-  description: 'TODO',
+  description: 'Calculator for image sensor size',
 }
 
 export default function RootLayout({
