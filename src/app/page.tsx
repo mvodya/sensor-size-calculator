@@ -148,10 +148,12 @@ export default function Home() {
           <div>
             Sensor Size Calculator</div>
           <div>
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="fas"
-            />
+            <a target="_blank" href="https://github.com/mvodya/sensor-size-calculator" rel="noopener noreferrer" className="hover:text-blue-400">
+              <FontAwesomeIcon
+                icon={faGithub}
+                className="fas"
+              />
+            </a>
           </div>
         </div>
       </div>
