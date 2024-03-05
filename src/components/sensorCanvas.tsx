@@ -73,16 +73,19 @@ export function SensorCanvas(props: SensorCanvasProps) {
   style.diagonal.transform = `rotate(${diagonalAngle}deg)`
   style.diagonal.width = diagonalLength;
 
+  const square = (sizeX * sizeY / 100);
+  const diagonal = Math.sqrt((sizeX * sizeX) + (sizeY * sizeY));
+
   return (
     <div className="transition-all duration-300" style={style.canvas}>
       <div className="transition-all duration-300" style={style.square}>
         <div className="transition-all duration-300" style={style.diagonal}>
-          <div className="transition-all duration-300" style={style.textDiagonal}>{Math.sqrt((sizeX * sizeX) + (sizeY * sizeY)).toFixed(2)}mm</div>
+          <div className="transition-all duration-300" style={style.textDiagonal}>{isFinite(diagonal) ? diagonal.toFixed(2) + "mm" : "🤬"}</div>
         </div>
-        <div className="transition-all duration-300" style={style.textSquare}>S = {(sizeX * sizeY / 100).toFixed(2)}cm²</div>
+        <div className="transition-all duration-300" style={style.textSquare}>S = {isFinite(square) ? square.toFixed(2) : "😫"}cm²</div>
       </div>
-      <div className="transition-all duration-300" style={style.textSizeX}>{sizeX.toFixed(2) ?? "?"}mm</div>
-      <div className="transition-all duration-300" style={style.textSizeY}>{sizeY.toFixed(2) ?? "?"}mm</div>
+      <div className="transition-all duration-300" style={style.textSizeX}>{isFinite(sizeX) ? sizeX.toFixed(2) + "mm" : "😵"}</div>
+      <div className="transition-all duration-300" style={style.textSizeY}>{isFinite(sizeY) ? sizeY.toFixed(2) + "mm" : "😵"}</div>
     </div>
   )
 }
