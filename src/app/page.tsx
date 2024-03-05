@@ -174,7 +174,7 @@ export default function Home() {
               <ParameterDual id="dimensions" title="Dimensions" icon={faRulerCombined} value={params.dimensions} handler={dimensionsHandler} delimiter="x" unit="mm" />
               <ParameterDual id="resolution" title="Resolution" icon={faImage} value={params.resolution} options={predefinedResolutionList} handler={resolutionHandler} delimiter="x" />
               <Parameter id="megapixels" title="Megapixels" icon={faCamera} value={params.megapixels} handler={megapixelsHandler} unit="MP" />
-              <Parameter id="ppi" title="Pixel Per Inch" icon={faCompassDrafting} value={params.ppi} handler={ppiHandler} unit="PPI" />
+              <Parameter id="ppi" title="Pixel Per Inch" icon={faCompassDrafting} value={params.ppi} handler={ppiHandler} unit="PPI" readonly={true}/>
               <Parameter id="pixel_size" title="Pixel Size" icon={faRuler} value={params.pixelSize} handler={pixelSizeHandler} unit="μm" />
             </div>
             <div className="grid pt-4">
